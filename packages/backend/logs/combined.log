@@ -1,0 +1,65 @@
+{"level":"info","message":"Game loop started","service":"rts-server","tickRate":20,"timestamp":"2025-05-29 12:53:10","version":"1.2.0"}
+{"level":"info","maxPlayersPerRoom":8,"maxRooms":50,"message":"GameManager initialized","service":"rts-server","tickRate":20,"timestamp":"2025-05-29 12:53:10","version":"1.2.0"}
+{"level":"info","message":"LobbyManager initialized","service":"rts-server","timestamp":"2025-05-29 12:53:10","version":"1.2.0"}
+{"level":"info","message":"SocketHandler initialized","service":"rts-server","timestamp":"2025-05-29 12:53:10","version":"1.2.0"}
+{"level":"info","message":"🚀 RTS Server uruchomiony na 0.0.0.0:3001","service":"rts-server","timestamp":"2025-05-29 12:53:11","version":"1.2.0"}
+{"level":"info","message":"📡 Socket.IO gotowy do połączeń","service":"rts-server","timestamp":"2025-05-29 12:53:11","version":"1.2.0"}
+{"level":"info","message":"🎮 Maksymalnie 50 pokoi gry","service":"rts-server","timestamp":"2025-05-29 12:53:11","version":"1.2.0"}
+{"ip":"127.0.0.1","level":"info","message":"GET /api/health","service":"rts-server","timestamp":"2025-05-29 12:53:27","userAgent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; pl-PL) WindowsPowerShell/5.1.26100.4061","version":"1.2.0"}
+{"ip":"127.0.0.1","level":"info","message":"GET /api/stats","service":"rts-server","timestamp":"2025-05-29 12:53:43","userAgent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; pl-PL) WindowsPowerShell/5.1.26100.4061","version":"1.2.0"}
+{"ip":"127.0.0.1","level":"info","message":"GET /api/health","service":"rts-server","timestamp":"2025-05-29 13:22:30","userAgent":"Mozilla/5.0 (Windows NT; Windows NT 10.0; pl-PL) WindowsPowerShell/5.1.26100.4061","version":"1.2.0"}
+{"ip":"127.0.0.1","level":"info","message":"Nowe połączenie: x9jo6O9wTynC7WxmAAAB","service":"rts-server","timestamp":"2025-05-29 13:26:12","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36","version":"1.2.0"}
+{"faction":"humans","level":"info","message":"Player joined lobby","playerId":"zrhs0rj97mb9ah13i","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 13:26:42","totalPlayers":1,"version":"1.2.0"}
+{"level":"info","message":"Player joined lobby via socket","playerId":"zrhs0rj97mb9ah13i","playerName":"Marcin","service":"rts-server","socketId":"x9jo6O9wTynC7WxmAAAB","timestamp":"2025-05-29 13:26:42","version":"1.2.0"}
+{"createdBy":"zrhs0rj97mb9ah13i","hasPassword":false,"level":"info","message":"Room created","roomId":"dy5xu5r0pmb9ai3jw","roomName":"Test room","service":"rts-server","timestamp":"2025-05-29 13:27:31","version":"1.2.0"}
+{"currentPlayers":1,"level":"info","message":"Player joined room","playerId":"zrhs0rj97mb9ah13i","playerName":"Marcin","roomId":"dy5xu5r0pmb9ai3jw","service":"rts-server","timestamp":"2025-05-29 13:27:31","version":"1.2.0"}
+{"level":"info","message":"Player room changed","newRoomId":"dy5xu5r0pmb9ai3jw","playerId":"zrhs0rj97mb9ah13i","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 13:27:31","version":"1.2.0"}
+{"level":"info","message":"Player left room","playerId":"zrhs0rj97mb9ah13i","remainingPlayers":0,"roomId":"dy5xu5r0pmb9ai3jw","service":"rts-server","timestamp":"2025-05-29 13:27:51","version":"1.2.0"}
+{"level":"info","message":"Room deleted","roomId":"dy5xu5r0pmb9ai3jw","service":"rts-server","timestamp":"2025-05-29 13:27:51","version":"1.2.0"}
+{"level":"info","message":"Player room changed","oldRoomId":"dy5xu5r0pmb9ai3jw","playerId":"zrhs0rj97mb9ah13i","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 13:27:51","version":"1.2.0"}
+{"lastPing":1748518002126,"level":"warn","message":"Player ping timeout","playerId":"zrhs0rj97mb9ah13i","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 13:28:11","version":"1.2.0"}
+{"level":"info","message":"Player left lobby","playerId":"zrhs0rj97mb9ah13i","playerName":"Marcin","remainingPlayers":0,"service":"rts-server","timestamp":"2025-05-29 13:28:11","version":"1.2.0"}
+{"level":"info","message":"Rozłączenie: x9jo6O9wTynC7WxmAAAB","reason":"transport close","service":"rts-server","timestamp":"2025-05-29 13:28:35","version":"1.2.0"}
+{"ip":"127.0.0.1","level":"info","message":"Nowe połączenie: fQiaJuvSWJMfS2zlAAAD","service":"rts-server","timestamp":"2025-05-29 13:28:38","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36","version":"1.2.0"}
+{"faction":"humans","level":"info","message":"Player joined lobby","playerId":"om8bo2p0omb9ajlxx","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 13:28:42","totalPlayers":1,"version":"1.2.0"}
+{"level":"info","message":"Player joined lobby via socket","playerId":"om8bo2p0omb9ajlxx","playerName":"Marcin","service":"rts-server","socketId":"fQiaJuvSWJMfS2zlAAAD","timestamp":"2025-05-29 13:28:42","version":"1.2.0"}
+{"lastPing":1748518122453,"level":"warn","message":"Player ping timeout","playerId":"om8bo2p0omb9ajlxx","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 13:30:11","version":"1.2.0"}
+{"level":"info","message":"Player left lobby","playerId":"om8bo2p0omb9ajlxx","playerName":"Marcin","remainingPlayers":0,"service":"rts-server","timestamp":"2025-05-29 13:30:11","version":"1.2.0"}
+{"faction":"humans","level":"info","message":"Player joined lobby","playerId":"8y1441bgcmb9am19l","playerName":"Marcin2","service":"rts-server","timestamp":"2025-05-29 13:30:35","totalPlayers":1,"version":"1.2.0"}
+{"level":"info","message":"Player joined lobby via socket","playerId":"8y1441bgcmb9am19l","playerName":"Marcin2","service":"rts-server","socketId":"fQiaJuvSWJMfS2zlAAAD","timestamp":"2025-05-29 13:30:35","version":"1.2.0"}
+{"createdBy":"8y1441bgcmb9am19l","hasPassword":false,"level":"info","message":"Room created","roomId":"ytlwprrxymb9am8o9","roomName":"Chuujj","service":"rts-server","timestamp":"2025-05-29 13:30:45","version":"1.2.0"}
+{"currentPlayers":1,"level":"info","message":"Player joined room","playerId":"8y1441bgcmb9am19l","playerName":"Marcin2","roomId":"ytlwprrxymb9am8o9","service":"rts-server","timestamp":"2025-05-29 13:30:45","version":"1.2.0"}
+{"level":"info","message":"Player room changed","newRoomId":"ytlwprrxymb9am8o9","playerId":"8y1441bgcmb9am19l","playerName":"Marcin2","service":"rts-server","timestamp":"2025-05-29 13:30:45","version":"1.2.0"}
+{"lastPing":1748518235625,"level":"warn","message":"Player ping timeout","playerId":"8y1441bgcmb9am19l","playerName":"Marcin2","service":"rts-server","timestamp":"2025-05-29 13:31:41","version":"1.2.0"}
+{"level":"info","message":"Player left lobby","playerId":"8y1441bgcmb9am19l","playerName":"Marcin2","remainingPlayers":0,"service":"rts-server","timestamp":"2025-05-29 13:31:41","version":"1.2.0"}
+{"level":"info","message":"Rozłączenie: fQiaJuvSWJMfS2zlAAAD","reason":"client namespace disconnect","service":"rts-server","timestamp":"2025-05-29 13:38:09","version":"1.2.0"}
+{"level":"info","message":"Game loop started","service":"rts-server","tickRate":20,"timestamp":"2025-05-29 15:39:48","version":"1.2.0"}
+{"level":"info","maxPlayersPerRoom":8,"maxRooms":50,"message":"GameManager initialized","service":"rts-server","tickRate":20,"timestamp":"2025-05-29 15:39:48","version":"1.2.0"}
+{"level":"info","message":"LobbyManager initialized","service":"rts-server","timestamp":"2025-05-29 15:39:48","version":"1.2.0"}
+{"level":"info","message":"SocketHandler initialized","service":"rts-server","timestamp":"2025-05-29 15:39:48","version":"1.2.0"}
+{"level":"info","message":"🚀 RTS Server uruchomiony na 0.0.0.0:3001","service":"rts-server","timestamp":"2025-05-29 15:39:48","version":"1.2.0"}
+{"level":"info","message":"📡 Socket.IO gotowy do połączeń","service":"rts-server","timestamp":"2025-05-29 15:39:48","version":"1.2.0"}
+{"level":"info","message":"🎮 Maksymalnie 50 pokoi gry","service":"rts-server","timestamp":"2025-05-29 15:39:48","version":"1.2.0"}
+{"level":"info","message":"Game loop started","service":"rts-server","tickRate":20,"timestamp":"2025-05-29 15:41:00","version":"1.2.0"}
+{"level":"info","maxPlayersPerRoom":8,"maxRooms":50,"message":"GameManager initialized","service":"rts-server","tickRate":20,"timestamp":"2025-05-29 15:41:00","version":"1.2.0"}
+{"level":"info","message":"LobbyManager initialized","service":"rts-server","timestamp":"2025-05-29 15:41:00","version":"1.2.0"}
+{"level":"info","message":"SocketHandler initialized","service":"rts-server","timestamp":"2025-05-29 15:41:00","version":"1.2.0"}
+{"level":"info","message":"🚀 RTS Server uruchomiony na 0.0.0.0:3001","service":"rts-server","timestamp":"2025-05-29 15:41:00","version":"1.2.0"}
+{"level":"info","message":"📡 Socket.IO gotowy do połączeń","service":"rts-server","timestamp":"2025-05-29 15:41:00","version":"1.2.0"}
+{"level":"info","message":"🎮 Maksymalnie 50 pokoi gry","service":"rts-server","timestamp":"2025-05-29 15:41:00","version":"1.2.0"}
+{"ip":"127.0.0.1","level":"info","message":"Nowe połączenie: BLod7gGMvd001qByAAAB","service":"rts-server","timestamp":"2025-05-29 15:43:09","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36","version":"1.2.0"}
+{"faction":"humans","level":"info","message":"Player joined lobby","playerId":"2sqy51s8pmb9fclti","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 15:43:13","totalPlayers":1,"version":"1.2.0"}
+{"level":"info","message":"Player joined lobby via socket","playerId":"2sqy51s8pmb9fclti","playerName":"Marcin","service":"rts-server","socketId":"BLod7gGMvd001qByAAAB","timestamp":"2025-05-29 15:43:13","version":"1.2.0"}
+{"createdBy":"2sqy51s8pmb9fclti","hasPassword":false,"level":"info","message":"Room created","roomId":"eem5wpottmb9fdokn","roomName":"Test room","service":"rts-server","timestamp":"2025-05-29 15:44:04","version":"1.2.0"}
+{"currentPlayers":1,"level":"info","message":"Player joined room","playerId":"2sqy51s8pmb9fclti","playerName":"Marcin","roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:04","version":"1.2.0"}
+{"level":"info","message":"Player room changed","newRoomId":"eem5wpottmb9fdokn","playerId":"2sqy51s8pmb9fclti","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 15:44:04","version":"1.2.0"}
+{"aiName":"AI Wojownik","currentPlayers":2,"difficulty":"medium","faction":"orcs","level":"info","message":"AI player added to room","roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:17","version":"1.2.0"}
+{"hostId":"2sqy51s8pmb9fclti","level":"info","message":"AI player added to room","roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:17","version":"1.2.0"}
+{"aiName":"Średni Przeciwnik","currentPlayers":3,"difficulty":"medium","faction":"elves","level":"info","message":"AI player added to room","roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:21","version":"1.2.0"}
+{"hostId":"2sqy51s8pmb9fclti","level":"info","message":"AI player added to room","roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:21","version":"1.2.0"}
+{"aiName":"AI Wojownik","currentPlayers":4,"difficulty":"medium","faction":"undead","level":"info","message":"AI player added to room","roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:22","version":"1.2.0"}
+{"hostId":"2sqy51s8pmb9fclti","level":"info","message":"AI player added to room","roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:22","version":"1.2.0"}
+{"gameId":"eem5wpottmb9fdokn","gameMode":"real_time","level":"info","message":"Game instance created","players":4,"service":"rts-server","timestamp":"2025-05-29 15:44:24","version":"1.2.0"}
+{"gameMode":"real_time","level":"info","message":"Game started","players":4,"roomId":"eem5wpottmb9fdokn","service":"rts-server","timestamp":"2025-05-29 15:44:24","version":"1.2.0"}
+{"lastPing":1748526193782,"level":"warn","message":"Player ping timeout","playerId":"2sqy51s8pmb9fclti","playerName":"Marcin","service":"rts-server","timestamp":"2025-05-29 15:44:30","version":"1.2.0"}
+{"level":"info","message":"Player left lobby","playerId":"2sqy51s8pmb9fclti","playerName":"Marcin","remainingPlayers":0,"service":"rts-server","timestamp":"2025-05-29 15:44:30","version":"1.2.0"}

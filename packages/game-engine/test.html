@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Silnika Gry RTS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .info {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #bdc3c7;
+        }
+        
+        .canvas-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        #game-canvas {
+            border: 2px solid #3498db;
+            background-color: #2c3e50;
+        }
+        
+        .controls {
+            background-color: #34495e;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .controls h3 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        
+        .controls ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        
+        .stats {
+            background-color: #2c3e50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .stats h3 {
+            margin-top: 0;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎮 Test Silnika Gry RTS 2D</h1>
+        <p class="info">Autorski silnik gry z obsługą izometrycznej siatki</p>
+        
+        <div class="canvas-container">
+            <canvas id="game-canvas" width="1024" height="768"></canvas>
+        </div>
+        
+        <div class="controls">
+            <h3>⌨️ Sterowanie</h3>
+            <ul>
+                <li><strong>WASD / Strzałki</strong> - ruch kamery</li>
+                <li><strong>Kółko myszy</strong> - zoom in/out</li>
+                <li><strong>LPM</strong> - wybór kafelka</li>
+                <li><strong>F11</strong> - pełny ekran</li>
+                <li><strong>F12</strong> - zrzut ekranu</li>
+                <li><strong>P</strong> - pauza/wznów</li>
+            </ul>
+        </div>
+        
+        <div class="stats">
+            <h3>📊 Statystyki</h3>
+            <p id="fps">FPS: 0</p>
+            <p id="camera-pos">Pozycja kamery: 0, 0</p>
+            <p id="camera-zoom">Zoom: 1.00</p>
+            <p id="selected-tile">Wybrany kafelek: brak</p>
+        </div>
+    </div>
+
+    <script type="module">
+        // Import silnika (symulowany - w rzeczywistości byłby to import z npm)
+        console.log('Ładowanie silnika gry...');
+        
+        // Konfiguracja silnika
+        const config = {
+            canvasId: 'game-canvas',
+            renderer: {
+                type: 'canvas2d',
+                width: 1024,
+                height: 768,
+                backgroundColor: '#1a202c'
+            },
+            gameLoop: {
+                targetFPS: 60,
+                enableFixedTimeStep: false
+            },
+            enableInput: true,
+            enableDebug: true
+        };
+
+        // Prosty test renderowania
+        const canvas = document.getElementById('game-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let frameCount = 0;
+        let lastTime = performance.now();
+        let fps = 0;
+        
+        // Przykładowa izometryczna siatka
+        const TILE_WIDTH = 64;
+        const TILE_HEIGHT = 32;
+        const HALF_TILE_WIDTH = TILE_WIDTH / 2;
+        const HALF_TILE_HEIGHT = TILE_HEIGHT / 2;
+        
+        let cameraX = 0;
+        let cameraY = 0;
+        let zoom = 1;
+        let selectedTile = null;
+        
+        // Konwersja grid -> screen
+        function gridToScreen(gridX, gridY) {
+            const screenX = (gridX - gridY) * HALF_TILE_WIDTH;
+            const screenY = (gridX + gridY) * HALF_TILE_HEIGHT;
+            return { x: screenX, y: screenY };
+        }
+        
+        // Konwersja screen -> grid
+        function screenToGrid(screenX, screenY) {
+            const worldX = (screenX / HALF_TILE_WIDTH + screenY / HALF_TILE_HEIGHT) / 2;
+            const worldY = (screenY / HALF_TILE_HEIGHT - screenX / HALF_TILE_WIDTH) / 2;
+            return { x: Math.floor(worldX), y: Math.floor(worldY) };
+        }
+        
+        // Rysowanie kafelka izometrycznego
+        function drawIsometricTile(gridX, gridY, color) {
+            const screen = gridToScreen(gridX, gridY);
+            const centerX = canvas.width / 2 + (screen.x - cameraX) * zoom;
+            const centerY = canvas.height / 2 + (screen.y - cameraY) * zoom;
+            
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY - HALF_TILE_HEIGHT * zoom);
+            ctx.lineTo(centerX + HALF_TILE_WIDTH * zoom, centerY);
+            ctx.lineTo(centerX, centerY + HALF_TILE_HEIGHT * zoom);
+            ctx.lineTo(centerX - HALF_TILE_WIDTH * zoom, centerY);
+            ctx.closePath();
+            ctx.fill();
+            
+            // Obramowanie
+            ctx.strokeStyle = '#1f2937';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+        
+        // Główna pętla renderowania
+        function gameLoop(currentTime) {
+            const deltaTime = currentTime - lastTime;
+            lastTime = currentTime;
+            
+            // Obliczanie FPS
+            frameCount++;
+            if (frameCount % 60 === 0) {
+                fps = Math.round(1000 / deltaTime);
+                document.getElementById('fps').textContent = `FPS: ${fps}`;
+            }
+            
+            // Czyszczenie canvas
+            ctx.fillStyle = '#1a202c';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Rysowanie mapy 20x20
+            for (let x = 0; x < 20; x++) {
+                for (let y = 0; y < 20; y++) {
+                    const isEven = (x + y) % 2 === 0;
+                    const color = isEven ? '#3498db' : '#2980b9';
+                    drawIsometricTile(x, y, color);
+                }
+            }
+            
+            // Rysowanie wybranego kafelka
+            if (selectedTile) {
+                const time = currentTime / 500;
+                const alpha = (Math.sin(time) + 1) / 2 * 0.5 + 0.5;
+                
+                const screen = gridToScreen(selectedTile.x, selectedTile.y);
+                const centerX = canvas.width / 2 + (screen.x - cameraX) * zoom;
+                const centerY = canvas.height / 2 + (screen.y - cameraY) * zoom;
+                
+                ctx.fillStyle = `rgba(231, 76, 60, ${alpha})`;
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY - HALF_TILE_HEIGHT * zoom);
+                ctx.lineTo(centerX + HALF_TILE_WIDTH * zoom, centerY);
+                ctx.lineTo(centerX, centerY + HALF_TILE_HEIGHT * zoom);
+                ctx.lineTo(centerX - HALF_TILE_WIDTH * zoom, centerY);
+                ctx.closePath();
+                ctx.fill();
+            }
+            
+            // Aktualizacja statystyk
+            document.getElementById('camera-pos').textContent = 
+                `Pozycja kamery: ${cameraX.toFixed(1)}, ${cameraY.toFixed(1)}`;
+            document.getElementById('camera-zoom').textContent = 
+                `Zoom: ${zoom.toFixed(2)}`;
+            document.getElementById('selected-tile').textContent = 
+                selectedTile ? `Wybrany kafelek: ${selectedTile.x}, ${selectedTile.y}` : 'Wybrany kafelek: brak';
+            
+            requestAnimationFrame(gameLoop);
+        }
+        
+        // Obsługa inputu
+        const keys = {};
+        
+        window.addEventListener('keydown', (e) => {
+            keys[e.key.toLowerCase()] = true;
+        });
+        
+        window.addEventListener('keyup', (e) => {
+            keys[e.key.toLowerCase()] = false;
+            
+            // Specjalne klawisze
+            if (e.key === 'F11') {
+                e.preventDefault();
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    canvas.requestFullscreen();
+                }
+            }
+            
+            if (e.key === 'F12') {
+                e.preventDefault();
+                const link = document.createElement('a');
+                link.download = 'screenshot.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            }
+        });
+        
+        // Ruch kamery
+        setInterval(() => {
+            const speed = 3;
+            if (keys['w'] || keys['arrowup']) cameraY -= speed;
+            if (keys['s'] || keys['arrowdown']) cameraY += speed;
+            if (keys['a'] || keys['arrowleft']) cameraX -= speed;
+            if (keys['d'] || keys['arrowright']) cameraX += speed;
+        }, 16);
+        
+        // Obsługa myszy
+        canvas.addEventListener('click', (e) => {
+            const rect = canvas.getBoundingClientRect();
+            const mouseX = e.clientX - rect.left - canvas.width / 2;
+            const mouseY = e.clientY - rect.top - canvas.height / 2;
+            
+            const worldX = (mouseX / zoom) + cameraX;
+            const worldY = (mouseY / zoom) + cameraY;
+            
+            const gridPos = screenToGrid(worldX, worldY);
+            
+            if (gridPos.x >= 0 && gridPos.x < 20 && gridPos.y >= 0 && gridPos.y < 20) {
+                selectedTile = gridPos;
+                console.log(`Wybrano kafelek: ${gridPos.x}, ${gridPos.y}`);
+            }
+        });
+        
+        // Zoom
+        canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            const zoomFactor = e.deltaY > 0 ? 0.9 : 1.1;
+            zoom = Math.max(0.1, Math.min(3, zoom * zoomFactor));
+        });
+        
+        // Uruchomienie
+        console.log('Uruchamianie testu silnika...');
+        console.log('Użyj WASD do ruchu kamery, LPM do wyboru kafelka, kółko myszy do zoom');
+        
+        requestAnimationFrame(gameLoop);
+    </script>
+</body>
+</html> 

@@ -1,0 +1,22 @@
+{
+  "name": "rts-game-engine",
+  "version": "1.0.0",
+  "description": "Autorski silnik gry 2D RTS z obsługą izometrycznej siatki",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=@rts-engine/frontend\" \"npm run dev --workspace=@rts-engine/backend\"",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 
